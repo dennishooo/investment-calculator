@@ -122,7 +122,7 @@ export const EnhancedChart = ({ projections, params }: EnhancedChartProps) => {
       labels,
       datasets: [
         {
-          label: "Contributions",
+          label: "Total Contributions",
           data: filteredData.map((row) => row.totalContributions),
           backgroundColor: "rgba(16, 185, 129, 0.8)",
           borderColor: "rgb(16, 185, 129)",
@@ -172,19 +172,23 @@ export const EnhancedChart = ({ projections, params }: EnhancedChartProps) => {
     () => ({
       responsive: true,
       maintainAspectRatio: false,
+      devicePixelRatio: window.devicePixelRatio || 1,
       plugins: {
         legend: {
           position: "top" as const,
           labels: {
             usePointStyle: true,
-            padding: 20,
+            padding: window.innerWidth < 768 ? 10 : 20,
+            font: {
+              size: window.innerWidth < 768 ? 10 : 12,
+            },
           },
         },
         title: {
           display: true,
           text: getChartTitle(chartType),
           font: {
-            size: 16,
+            size: window.innerWidth < 768 ? 14 : 16,
             weight: "bold" as const,
           },
         },
@@ -219,7 +223,8 @@ export const EnhancedChart = ({ projections, params }: EnhancedChartProps) => {
                   text: "Time Period",
                 },
                 ticks: {
-                  maxTicksLimit: 12,
+                  maxTicksLimit: 8,
+                  maxRotation: 45,
                 },
               },
               y: {
@@ -228,7 +233,6 @@ export const EnhancedChart = ({ projections, params }: EnhancedChartProps) => {
                   display: true,
                   text: "Amount (HKD)",
                 },
-                stacked: chartType === "bar",
                 ticks: {
                   callback: function (value: string | number) {
                     return formatCurrency(Number(value));
@@ -265,14 +269,14 @@ export const EnhancedChart = ({ projections, params }: EnhancedChartProps) => {
   return (
     <div className="bg-white rounded-lg shadow p-6 mb-6">
       {/* Chart Type Selector */}
-      <div className="flex justify-between items-center mb-4">
+      <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-4 gap-3">
         <h3 className="text-lg font-semibold text-gray-800">
           Investment Visualization
         </h3>
-        <div className="flex gap-2">
+        <div className="flex gap-1 sm:gap-2 flex-wrap">
           <button
             onClick={() => setChartType("line")}
-            className={`px-3 py-1 text-sm rounded transition-colors ${
+            className={`px-2 sm:px-3 py-1 text-xs sm:text-sm rounded transition-colors ${
               chartType === "line"
                 ? "bg-blue-500 text-white"
                 : "bg-gray-200 text-gray-700 hover:bg-gray-300"
@@ -282,7 +286,7 @@ export const EnhancedChart = ({ projections, params }: EnhancedChartProps) => {
           </button>
           <button
             onClick={() => setChartType("bar")}
-            className={`px-3 py-1 text-sm rounded transition-colors ${
+            className={`px-2 sm:px-3 py-1 text-xs sm:text-sm rounded transition-colors ${
               chartType === "bar"
                 ? "bg-blue-500 text-white"
                 : "bg-gray-200 text-gray-700 hover:bg-gray-300"
@@ -292,7 +296,7 @@ export const EnhancedChart = ({ projections, params }: EnhancedChartProps) => {
           </button>
           <button
             onClick={() => setChartType("breakdown")}
-            className={`px-3 py-1 text-sm rounded transition-colors ${
+            className={`px-2 sm:px-3 py-1 text-xs sm:text-sm rounded transition-colors ${
               chartType === "breakdown"
                 ? "bg-blue-500 text-white"
                 : "bg-gray-200 text-gray-700 hover:bg-gray-300"
@@ -303,12 +307,14 @@ export const EnhancedChart = ({ projections, params }: EnhancedChartProps) => {
         </div>
       </div>
 
-      <div className="h-96 mb-4">{renderChart()}</div>
+      <div className="h-64 sm:h-80 lg:h-96 mb-4 overflow-hidden">
+        {renderChart()}
+      </div>
 
       {/* Key Metrics */}
-      <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mt-4 p-4 bg-gray-50 rounded-lg">
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-2 sm:gap-4 mt-4 p-3 sm:p-4 bg-gray-50 rounded-lg">
         <div className="text-center">
-          <div className="text-xl font-bold text-blue-600">
+          <div className="text-lg sm:text-xl font-bold text-blue-600">
             {formatCurrency(
               projections.data[projections.data.length - 1]?.capital || 0
             )}
@@ -317,7 +323,7 @@ export const EnhancedChart = ({ projections, params }: EnhancedChartProps) => {
         </div>
 
         <div className="text-center">
-          <div className="text-xl font-bold text-green-600">
+          <div className="text-lg sm:text-xl font-bold text-green-600">
             {formatCurrency(
               projections.data[projections.data.length - 1]
                 ?.totalContributions || 0
@@ -327,7 +333,7 @@ export const EnhancedChart = ({ projections, params }: EnhancedChartProps) => {
         </div>
 
         <div className="text-center">
-          <div className="text-xl font-bold text-purple-600">
+          <div className="text-lg sm:text-xl font-bold text-purple-600">
             {formatCurrency(
               projections.data[projections.data.length - 1]?.gains || 0
             )}
@@ -336,7 +342,7 @@ export const EnhancedChart = ({ projections, params }: EnhancedChartProps) => {
         </div>
 
         <div className="text-center">
-          <div className="text-xl font-bold text-red-600">
+          <div className="text-lg sm:text-xl font-bold text-red-600">
             {targetReachedMonth ? `${targetReachedMonth}m` : "Not reached"}
           </div>
           <div className="text-xs text-gray-600">Time to Target</div>

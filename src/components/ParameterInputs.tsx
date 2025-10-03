@@ -10,7 +10,7 @@ export const ParameterInputs = ({
   onUpdateParam,
 }: ParameterInputsProps) => {
   return (
-    <div className="grid grid-cols-1 md:grid-cols-5 gap-6 mb-8 p-6 bg-gray-50 rounded-lg">
+    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4 sm:gap-6 mb-6 sm:mb-8 p-4 sm:p-6 bg-gray-50 rounded-lg">
       <div>
         <label
           htmlFor="initialCapital"

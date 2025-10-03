@@ -27,8 +27,8 @@ function App() {
 
   return (
     <div className="bg-gray-100 min-h-screen">
-      <div className="max-w-7xl mx-auto p-6 bg-white min-h-screen">
-        <h1 className="text-3xl font-bold text-gray-800 mb-8">
+      <div className="max-w-7xl mx-auto p-3 sm:p-6 bg-white min-h-screen">
+        <h1 className="text-2xl sm:text-3xl font-bold text-gray-800 mb-6 sm:mb-8">
           Investment Growth Calculator
         </h1>
 
