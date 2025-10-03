@@ -1,73 +1,162 @@
-# React + TypeScript + Vite
+# Investment Growth Calculator
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A comprehensive React-based investment calculator with advanced features for financial planning and analysis.
 
-Currently, two official plugins are available:
+## 🚀 Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+### Core Functionality
 
-## React Compiler
+- **Investment Projections**: Calculate monthly growth projections with compound interest
+- **Target Planning**: Set financial goals and see when you'll reach them
+- **Auto-calculation**: Automatically determine time needed to reach targets
+- **Persistent Settings**: Your parameters are saved automatically
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+### Advanced Features
 
-## Expanding the ESLint configuration
+#### 📊 Interactive Visualization (Chart.js)
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- **Multiple Chart Types**: Line charts, bar charts, and doughnut breakdowns
+- **Professional Charts**: Powered by Chart.js for smooth animations and interactions
+- **Interactive Features**: Hover tooltips, zoom, and responsive design
+- **Chart Switching**: Toggle between growth view, comparison view, and portfolio breakdown
+- **Target Indicators**: Visual markers and progress tracking
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+#### 📈 Scenario Comparison
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+- **Side-by-side Analysis**: Compare different investment scenarios
+- **What-if Analysis**: Adjust parameters to see impact on outcomes
+- **Performance Metrics**: See which scenario performs better
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+#### 📋 Data Export & Sharing
+
+- **CSV Export**: Download complete projections as spreadsheet
+- **Share Links**: Generate shareable URLs with your calculations
+- **Print Support**: Print-friendly layouts for reports
+
+#### 🎯 Goal Dashboard
+
+- **Progress Overview**: Visual dashboard of your investment journey
+- **Key Metrics**: Quick stats on contributions, gains, and timeline
+- **Status Indicators**: Clear visual feedback on goal achievement
+
+## 🏗️ Project Structure
+
+```
+src/
+├── components/          # React components
+│   ├── ActionBar.tsx           # Export, share, print actions
+│   ├── GoalProgress.tsx        # Goal tracking dashboard
+│   ├── InvestmentChart.tsx     # Interactive chart visualization
+│   ├── ParameterInputs.tsx     # Input form for calculations
+│   ├── ProjectionTable.tsx     # Detailed monthly projections
+│   ├── ScenarioComparison.tsx  # Side-by-side scenario analysis
+│   └── TargetSummary.tsx       # Goal achievement summary
+├── hooks/               # Custom React hooks
+│   └── useCalculatorParams.ts  # State management with localStorage
+├── types/               # TypeScript definitions
+│   └── index.ts                # All interfaces and types
+├── utils/               # Utility functions
+│   ├── calculations.ts         # Financial calculation logic
+│   ├── csvExport.ts           # CSV export functionality
+│   ├── displayHelpers.ts     # UI helper functions
+│   └── formatters.ts          # Date and currency formatting
+├── constants/           # Configuration
+│   └── index.ts               # Default values and constants
+└── App.tsx             # Main application component
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## 🛠️ Technical Features
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+### Clean Architecture
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+- **Modular Design**: Separated concerns with focused components
+- **Type Safety**: Full TypeScript implementation
+- **Reusable Components**: Easy to extend and maintain
+- **Pure Functions**: Testable calculation logic
+
+### Performance Optimizations
+
+- **Memoized Calculations**: Efficient re-computation of projections
+- **Optimized Rendering**: Minimal re-renders with proper dependencies
+- **Lazy Loading**: Components load only when needed
+
+### User Experience
+
+- **Responsive Design**: Works on desktop and mobile
+- **Accessibility**: Proper labels and keyboard navigation
+- **Visual Feedback**: Clear progress indicators and status updates
+- **Error Handling**: Graceful handling of edge cases
+
+## 📊 Calculation Features
+
+### Financial Modeling
+
+- **Compound Interest**: Monthly compounding calculations
+- **Variable Contributions**: Support for changing monthly inputs
+- **Return Rate Analysis**: Required returns for goal achievement
+- **Timeline Optimization**: Find optimal investment periods
+
+### Advanced Analytics
+
+- **Progress Tracking**: Real-time progress toward goals
+- **Scenario Analysis**: Compare multiple investment strategies
+- **Risk Assessment**: Visual indicators for required returns
+- **Performance Metrics**: Detailed breakdown of gains vs. contributions
+
+## 🎨 UI/UX Features
+
+### Modern Interface
+
+- **Clean Design**: Intuitive and professional layout
+- **Color Coding**: Visual cues for different data types
+- **Interactive Elements**: Hover effects and smooth transitions
+- **Responsive Layout**: Adapts to different screen sizes
+
+### Data Visualization
+
+- **SVG Charts**: Scalable vector graphics for crisp visuals
+- **Progress Bars**: Visual progress indicators
+- **Status Colors**: Green for success, red for warnings
+- **Interactive Legends**: Clear chart explanations
+
+## 🔧 Usage
+
+1. **Set Parameters**: Enter your initial capital, monthly contributions, and expected returns
+2. **Define Goals**: Set your target capital amount and timeframe
+3. **Analyze Results**: Review projections, charts, and goal progress
+4. **Compare Scenarios**: Use the comparison tool to evaluate alternatives
+5. **Export Data**: Download CSV reports or share your calculations
+
+## � Wehy Chart.js?
+
+We use **Chart.js** instead of custom SVG charts because it provides:
+
+- **Professional Quality**: Industry-standard charting library used by millions
+- **Performance**: Optimized rendering with Canvas API for smooth animations
+- **Interactivity**: Built-in hover effects, tooltips, and zoom capabilities
+- **Accessibility**: Screen reader support and keyboard navigation
+- **Responsive**: Automatically adapts to different screen sizes
+- **Extensible**: Easy to add new chart types and customizations
+- **Maintained**: Active development and community support
+
+## 🚀 Getting Started
+
+```bash
+npm install
+npm run dev
 ```
+
+## 📱 Browser Support
+
+- Modern browsers with ES6+ support
+- Chrome, Firefox, Safari, Edge
+- Mobile browsers (iOS Safari, Chrome Mobile)
+
+## 🔮 Future Enhancements
+
+- **Multiple Goals**: Track several financial goals simultaneously
+- **Inflation Adjustment**: Account for inflation in projections
+- **Tax Calculations**: Include tax implications in projections
+- **Portfolio Allocation**: Support for multiple asset classes
+- **Historical Data**: Integration with real market data
+- **Mobile App**: Native mobile application

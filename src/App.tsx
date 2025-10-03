@@ -1,7 +1,15 @@
 import { useMemo } from "react";
 import { useCalculatorParams } from "./hooks/useCalculatorParams";
 import { calculateProjections, autoCalculateTargetTime } from "./utils";
-import { ParameterInputs, TargetSummary, ProjectionTable } from "./components";
+import {
+  ParameterInputs,
+  TargetSummary,
+  ProjectionTable,
+  EnhancedChart,
+  ScenarioComparison,
+  ActionBar,
+  GoalProgress,
+} from "./components";
 
 function App() {
   const { params, updateParam, resetToDefaults } = useCalculatorParams();
@@ -24,14 +32,22 @@ function App() {
           Investment Growth Calculator
         </h1>
 
-        <ParameterInputs
+        <ParameterInputs params={params} onUpdateParam={updateParam} />
+
+        <ActionBar
           params={params}
-          onUpdateParam={updateParam}
+          projections={projections}
           onReset={resetToDefaults}
           onAutoCalculateTime={autoCalculateTime}
         />
 
+        <GoalProgress params={params} projections={projections} />
+
         <TargetSummary params={params} projections={projections} />
+
+        <EnhancedChart projections={projections} params={params} />
+
+        <ScenarioComparison baseParams={params} />
 
         <ProjectionTable params={params} projections={projections} />
 
