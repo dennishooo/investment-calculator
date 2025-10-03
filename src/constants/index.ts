@@ -1,10 +1,10 @@
 import { type CalculatorParams } from "../types";
 
 export const defaultValues: CalculatorParams = {
-  initialCapital: 10000,
-  monthlyInput: 500,
-  annualReturn: 7,
-  targetCapital: 100000,
+  initialCapital: 1000000,
+  monthlyInput: 40000,
+  annualReturn: 50,
+  targetCapital: 20000000,
   targetTimeFrame: null,
 };
 
