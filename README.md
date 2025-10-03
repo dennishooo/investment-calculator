@@ -21,11 +21,37 @@ A comprehensive React-based investment calculator with advanced features for fin
 - **Chart Switching**: Toggle between growth view, comparison view, and portfolio breakdown
 - **Target Indicators**: Visual markers and progress tracking
 
-#### 📈 Scenario Comparison
+#### 💰 Inflation Impact Analysis
 
-- **Side-by-side Analysis**: Compare different investment scenarios
-- **What-if Analysis**: Adjust parameters to see impact on outcomes
-- **Performance Metrics**: See which scenario performs better
+- **Real vs Nominal Values**: See how inflation affects your purchasing power
+- **Adjustable Inflation Rate**: Customize expected inflation (default 3%)
+- **Purchasing Power Loss**: Calculate how much buying power you'll lose
+- **Target Adjustment**: Understand what your target means in today's money
+
+#### ⚠️ Risk Assessment & Recommendations
+
+- **Automated Risk Scoring**: 0-100 risk score based on your parameters
+- **Risk Factor Analysis**: Identifies high-return expectations, short timeframes, ambitious targets
+- **Smart Recommendations**: Personalized suggestions to improve your plan
+- **Visual Risk Indicators**: Color-coded risk levels with actionable advice
+
+#### 📋 Enhanced Data Views
+
+- **Monthly Projection Table**: Detailed month-by-month projections with progress tracking
+- **Interactive Sorting**: Sortable columns and visual progress indicators
+- **Export-Ready Format**: Clean tables perfect for analysis
+
+#### 📋 Data Export & Sharing
+
+- **CSV Export**: Download complete projections as spreadsheet
+- **Share Links**: Generate shareable URLs with your calculations
+- **Print Support**: Print-friendly layouts for reports
+
+#### 🎯 Goal Dashboard
+
+- **Progress Overview**: Visual dashboard of your investment journey
+- **Key Metrics**: Quick stats on contributions, gains, and timeline
+- **Status Indicators**: Clear visual feedback on goal achievement
 
 #### 📋 Data Export & Sharing
 
@@ -49,7 +75,7 @@ src/
 │   ├── InvestmentChart.tsx     # Interactive chart visualization
 │   ├── ParameterInputs.tsx     # Input form for calculations
 │   ├── ProjectionTable.tsx     # Detailed monthly projections
-│   ├── ScenarioComparison.tsx  # Side-by-side scenario analysis
+
 │   └── TargetSummary.tsx       # Goal achievement summary
 ├── hooks/               # Custom React hooks
 │   └── useCalculatorParams.ts  # State management with localStorage
@@ -124,8 +150,7 @@ src/
 1. **Set Parameters**: Enter your initial capital, monthly contributions, and expected returns
 2. **Define Goals**: Set your target capital amount and timeframe
 3. **Analyze Results**: Review projections, charts, and goal progress
-4. **Compare Scenarios**: Use the comparison tool to evaluate alternatives
-5. **Export Data**: Download CSV reports or share your calculations
+4. **Export Data**: Download CSV reports or share your calculations
 
 ## � Wehy Chart.js?
 

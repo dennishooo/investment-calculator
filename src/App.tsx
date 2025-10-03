@@ -6,9 +6,10 @@ import {
   TargetSummary,
   ProjectionTable,
   EnhancedChart,
-  ScenarioComparison,
   ActionBar,
   GoalProgress,
+  InflationAdjustment,
+  RiskAssessment,
 } from "./components";
 
 function App() {
@@ -43,11 +44,13 @@ function App() {
 
         <GoalProgress params={params} projections={projections} />
 
+        <RiskAssessment params={params} projections={projections} />
+
         <TargetSummary params={params} projections={projections} />
 
         <EnhancedChart projections={projections} params={params} />
 
-        <ScenarioComparison baseParams={params} />
+        <InflationAdjustment params={params} projections={projections} />
 
         <ProjectionTable params={params} projections={projections} />
 
